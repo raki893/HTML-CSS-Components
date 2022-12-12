@@ -1,0 +1,21 @@
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+header{
+
+    @include flexCenter();
+
+    background: lightblue;
+    color: $textcolor;
+    button{
+        background: $primaryBtn;
+        &:hover{
+            background: coral;
+        }
+    }
+}
