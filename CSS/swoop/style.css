@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .prods, .callouts, .news {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 18px;
+  }
+  
+  .prods {
+    color: gray;
+    background-color: white;
+  }
+  
+  .callouts {
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .news {
+    color: white;
+    background-color: tan;
+  }
+  
+  svg {
+    position: absolute;
+    top: -8rem;
+    left: 0;
+    height: calc(100% + 15rem);
+    width: 100%;
+    z-index: -1;
+  }
