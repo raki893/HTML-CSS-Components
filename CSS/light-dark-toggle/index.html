@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>light-dark-toggle</title>
+</head>
+
+<body>
+    <!-- <body> -->
+
+    <input id="color-scheme" type="checkbox" aria-hidden />
+
+    <!-- all content after this checkbox -->
+
+    <main id=app>
+
+        <h1 id="active">Active:
+            <span data-dark>Dark Mode</span>
+            <span data-light>Light Mode</span>
+        </h1>
+
+        <h2 id="prefer">Prefers:
+            <span data-dark>Dark Mode</span>
+            <span data-light>Light Mode</span>
+        </h2>
+
+        <div class="toggle-wrapper">
+            <div class="toggle transparent">
+                <label class="toggle-item" for="color-scheme"></label>
+                <span data-dark>Dark</span>
+                <span data-light>Light</span>
+            </div>
+        </div>
+
+        <div class="bg"></div>
+
+    </main>
+
+    <!-- </body> -->
+
+</body>
+
+</html>

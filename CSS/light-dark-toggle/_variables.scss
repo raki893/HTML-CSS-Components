@@ -1,0 +1,276 @@
+// setup defaults
+
+:root {
+
+    --color-light: white;
+    --bgpos-light: 49% 26%;
+    --bgmode-light: darken;
+    --bgimg-light: var(--limg);
+
+    --color-dark: #333844;
+    --bgpos-dark: 52% 42%;
+    --bgmode-dark: lighten;
+    --bgimg-dark: var(--dimg);
+
+}
+
+// defaults under dark scheme
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --fg: var(--color-dark);
+        --bg: var(--color-light);
+        --bgpos: 48.5% 20%;
+        --bgimg: var(--bgimg-light);
+        --bgmode: var(--bgmode-light);
+    }
+}
+
+// defaults under dark scheme
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg: var(--color-light);
+        --bg: var(--color-dark);
+        --bgpos: var(--bgpos-dark);
+        --bgimg: var(--bgimg-dark);
+        --bgmode: var(--bgmode-dark);
+    }
+}
+
+// hide anything with data-light/dark
+[data-light],
+[data-dark] {
+    opacity: 0;
+}
+
+// dark mode
+@media (prefers-color-scheme: dark) {
+
+    [data-dark] {
+        opacity: 1;
+    }
+
+    // when toggled on, dark -> light
+    #color-scheme:checked+#app {
+        --fg: var(--color-dark);
+        --bg: var(--color-light);
+        --bgpos: var(--bgpos-light);
+        --bgimg: var(--bgimg-light);
+        --bgmode: var(--bgmode-light);
+
+        [data-light] {
+            opacity: 1;
+        }
+
+        [data-dark] {
+            opacity: 0;
+        }
+
+    }
+}
+
+// light mode
+@media (prefers-color-scheme: light) {
+
+    [data-light] {
+        opacity: 1;
+    }
+
+    // when toggled on, light -> dark
+    #color-scheme:checked+#app {
+        --fg: var(--color-light);
+        --bg: var(--color-dark);
+        --bgpos: var(--bgpos-dark);
+        --bgimg: var(--bgimg-dark);
+        --bgmode: var(--bgmode-dark);
+
+        [data-light] {
+            opacity: 0;
+        }
+
+        [data-dark] {
+            opacity: 1;
+        }
+
+    }
+}
+
+
+
+
+
+
+// ui elements
+
+#active,
+#prefer {
+    font-size: 1em;
+    font-weight: 200;
+    font-family: consolas, menlo, monospace;
+    z-index: 2;
+    position: relative;
+}
+
+#prefer {
+    font-size: .875em;
+}
+
+@media (prefers-color-scheme: light) {
+    #prefer [data-light] {
+        opacity: 1 !important;
+    }
+
+    #prefer [data-dark] {
+        opacity: 0 !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #prefer [data-light] {
+        opacity: 0 !important;
+    }
+
+    #prefer [data-dark] {
+        opacity: 1 !important;
+    }
+}
+
+#prefer span,
+#active span {
+    position: absolute;
+    transform: translateX(0.5em);
+    transition: all 0.5s ease;
+}
+
+.bg {
+    opacity: 0.5;
+    background-image: var(--bgimg);
+    background-position: var(--bgpos);
+    mix-blend-mode: var(--bgmode);
+}
+
+// other styles
+
+body,
+html {
+    font-family: "Heebo", sans-serif;
+    min-height: 100vh;
+}
+
+body * {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    color: var(--fg);
+    background: var(--bg);
+    padding: 2em;
+    min-height: 100vh;
+    background-size: 200vw;
+    transition: all 0.5s ease;
+}
+
+* {
+    box-sizing: border-box;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+    }
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+}
+
+
+
+// thank Olivia Ng for the Toggle code shortcut
+// https://codepen.io/oliviale/pen/xxboXzo
+
+.toggle-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    flex: 1 1 calc(100% / 3);
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.toggle {
+    position: relative;
+    display: block;
+}
+
+.toggle>span {
+    position: absolute;
+    bottom: 1em;
+    right: 40%;
+}
+
+label.toggle-item {
+    width: 4em;
+    height: 2em;
+    display: inline-block;
+    border-radius: 50px;
+    margin: 40px;
+    position: relative;
+    transition: all .3s ease;
+    transform-origin: 20% center;
+    cursor: pointer;
+
+    &:before {
+        display: block;
+        width: 1.3em;
+        height: 1.3em;
+        top: .25em;
+        left: .25em;
+        border-radius: 2em;
+        transition: .3s ease;
+    }
+}
+
+.transparent {
+    label {
+        background: transparent;
+        border: 3px solid var(--fg);
+        height: 2.35em;
+
+        &:before {
+            border: 3px solid var(--fg);
+            width: 1em;
+            height: 1em;
+            top: .3em;
+            left: .3em;
+            background: var(--fg);
+        }
+    }
+}
+
+#color-scheme {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+#color-scheme:checked+#app {
+    .toggle label:before {
+        transform: translateX(120%);
+    }
+}
+
+
+
+:root {
+    --limg: url(https://images.unsplash.com/photo-1514958566123-9ec36678c8c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=1800&w=3000&q=80);
+    --dimg: url(https://images.unsplash.com/photo-1634050484246-45128eb339e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=1800&w=3000&q=80);
+}
