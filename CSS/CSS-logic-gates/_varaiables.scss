@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+
+//color vars
+$out-active: #ffdd40;
+$active: #00b1ff;
+$bg-color: #07273c;
+$svg-line-color: #fff;
+
+html {
+    scroll-behavior: smooth;
+}
+
+//globals/helpers
+body {
+    color: #fff;
+    font-family: "Bungee", cursive;
+    background: $bg-color;
+    /* fallback for old browsers */
+    background-size: 80px 80px;
+    background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+svg.display {
+    width: 100%;
+    height: 70px;
+    filter: drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.5));
+
+    text {
+        font-size: 37px;
+        letter-spacing: 0px;
+        fill: white;
+        stroke-width: 3px;
+        stroke-linejoin: round;
+    }
+
+    tspan.text-primary {
+        fill: $out-active;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+//layout
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main";
+    grid-template-columns: 1fr;
+
+    header {
+        grid-area: header;
+    }
+
+    .gate-cards-container {
+        grid-area: main;
+    }
+}
+
+header {
+    padding: 0 0 40px 0;
+}
+
+article.gate-card {
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.gate-container {
+    position: relative;
+
+    .in {
+        height: 38px;
+        left: 0;
+        position: absolute;
+        width: 38px;
+
+        &.in-0 {
+            top: 0;
+        }
+
+        &.in-1 {
+            bottom: 0;
+        }
+
+        &.in-center {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    input[type="checkbox"] {
+        display: none;
+
+        &:checked+label.in-0 {
+            &~svg {
+                .in-0 {
+                    fill: $active;
+                    stroke: $active;
+                }
+
+                .in-0-off {
+                    visibility: hidden;
+                }
+
+                .in-0-on {
+                    visibility: visible;
+                }
+            }
+        }
+
+        &:checked+label.in-1 {
+            &~svg {
+                .in-1 {
+                    fill: $active;
+                    stroke: $active;
+                }
+
+                .in-1-off {
+                    visibility: hidden;
+                }
+
+                .in-1-on {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.gate-svg {
+    display: block;
+
+    [stroke^="#"] {
+        stroke: $svg-line-color;
+    }
+
+    [fill^="#"] {
+        fill: $svg-line-color;
+    }
+
+    text {
+        font-size: 28px;
+        letter-spacing: 0px;
+        fill: $bg-color;
+        stroke-width: 3px;
+        stroke-linejoin: round;
+    }
+
+    .in-0-off,
+    .in-1-off,
+    .out-label-off {
+        visibility: visible;
+    }
+
+    .in-0-on,
+    .in-1-on,
+    .out-label-on {
+        visibility: hidden;
+    }
+}
+
+label {
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 3px;
+    color: white;
+    display: flex;
+}
+
+.truth-table-container {
+    border: 3px solid #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    position: relative;
+
+    h2 {
+        background-color: $bg-color;
+        left: 50%;
+        margin: 0;
+        padding: 5px 10px;
+        position: absolute;
+        top: 0;
+        translate: -50% -55%;
+    }
+
+    table {
+        text-align: center;
+        min-width: 200px;
+    }
+}
+
+@mixin active-row {
+    td {
+        background-color: $active;
+        color: $bg-color;
+
+        &:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+
+        &:last-child {
+            background-color: $out-active;
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}
+
+@mixin out-on {
+    .out {
+        stroke: $out-active;
+        fill: $out-active;
+    }
+
+    .out-label-off {
+        visibility: hidden;
+    }
+
+    .out-label-on {
+        visibility: visible;
+    }
+}
+
+@mixin out-off {
+    .out {
+        stroke: $svg-line-color;
+        fill: $svg-line-color;
+    }
+
+    .out-label-off {
+        visibility: visible;
+    }
+
+    .out-label-on {
+        visibility: hidden;
+    }
+}
+
+//Logic
+@mixin table-logic() {
+    &:has(.in-check-0:not(:checked)):has(.in-check-1:not(:checked)) {
+        .row-00 {
+            @include active-row;
+        }
+    }
+
+    &:has(.in-check-0:not(:checked)):has(.in-check-1:checked) {
+        .row-01 {
+            @include active-row;
+        }
+    }
+
+    &:has(.in-check-0:checked):has(.in-check-1:not(:checked)) {
+        .row-10 {
+            @include active-row;
+        }
+    }
+
+    &:has(.in-check-0:checked):has(.in-check-1:checked) {
+        .row-11 {
+            @include active-row;
+        }
+    }
+
+    //not case
+    &:has(.in-check-0:not(:checked)):has(:not(.in-check-1)) {
+        .row-0 {
+            @include active-row;
+        }
+    }
+
+    &:has(.in-check-0:checked):has(:not(.in-check-1)) {
+        .row-1 {
+            @include active-row;
+        }
+    }
+}
+
+#not-gate {
+    &:has(.in-check-0:not(:checked)) {
+        @include out-on;
+    }
+
+    @include table-logic();
+}
+
+#and-gate {
+    &:has(.in-check-0:checked):has(.in-check-1:checked) {
+        @include out-on;
+    }
+
+    @include table-logic();
+}
+
+#nand-gate {
+    &:has(.in-check-0:not(:checked), .in-check-1:not(:checked)) {
+        @include out-on;
+    }
+
+    @include table-logic();
+}
+
+#or-gate {
+    &:has(.in-check-0:checked, .in-check-1:checked) {
+        @include out-on;
+    }
+
+    @include table-logic();
+}
+
+#nor-gate {
+    &:has(.in-check-0:not(:checked)):has(.in-check-1:not(:checked)) {
+        @include out-on;
+    }
+
+    @include table-logic();
+}
+
+#xor-gate {
+    &:has(.in-check-0:checked, .in-check-1:checked) {
+        @include out-on;
+    }
+
+    &:has(.in-check-0:checked):has(.in-check-1:checked) {
+        @include out-off;
+    }
+
+    @include table-logic();
+}
+
+#xnor-gate {
+    &:has(.in-check-0:checked):has(.in-check-1:checked) {
+        @include out-on;
+    }
+
+    &:has(.in-check-0:not(:checked)):has(.in-check-1:not(:checked)) {
+        @include out-on;
+    }
+
+    @include table-logic();
+}
