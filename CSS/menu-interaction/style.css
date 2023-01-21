@@ -7,6 +7,10 @@ body {
   background: linear-gradient(to left, #2bc0e4, #eaecc6);
 }
 
+.menu > ul > li {
+  list-style-type: none;
+}
+
 .menu-checkbox {
   display: none;
 }
@@ -47,8 +51,8 @@ body {
 
 .menu-items {
   position: absolute;
-  top: -2.3rem;
-  left: -2.2rem;
+  top: -3.3rem;
+  left: -4.6rem;
   width: 9.4rem;
   height: 11rem;
   color: #fff;
