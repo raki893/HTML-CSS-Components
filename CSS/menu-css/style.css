@@ -256,7 +256,6 @@ nav .menu-item:nth-of-type(4):hover~#sub-menu-container #sub-menu-holder {
 .icon-box.gb .icon i:before {
     background: linear-gradient(45deg, #0c86ef, #0cef9b);
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
     padding-left: 1px;
 }
 
