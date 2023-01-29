@@ -15,7 +15,7 @@ input:before {
     /* control the size */
     aspect-ratio: 3;
     cursor: pointer;
-    transition: .5s;
+    transition: .6s;
     background: linear-gradient(60deg, #f0f 49%, #0ff 51%) calc(100% - var(--p, 0%))/240% 100%;
     --g: /calc(400%/15) 20% repeat-x linear-gradient(90deg, #000 75%, #0000 0);
     -webkit-mask:
