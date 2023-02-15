@@ -94,11 +94,7 @@ h1 {
   background-image: 
     linear-gradient(
       315deg, #b8c6db 0%, #f5f7fa 74%);
-  -webkit-mask-image: 
-    linear-gradient(
-      #000,
-      transparent 50%
-    ),
+    mask-image:linear-gradient(#000,transparent 50%),
     repeating-linear-gradient(
       90deg, 
       #000, #000 1%, 
