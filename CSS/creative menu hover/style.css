@@ -64,19 +64,19 @@ ul li a:hover:before {
   height: 1800px;
 }
 ul li:nth-child(6n + 1) a:before {
-  background: #0470fe;
+  background: #1C9E5F;
 }
 ul li:nth-child(6n + 2) a:before {
-  background: #ff7675;
+  background: #B034EB;
 }
 ul li:nth-child(6n + 3) a:before {
-  background: #1582fe;
+  background: #4DEB9F;
 }
 ul li:nth-child(6n + 4) a:before {
-  background: #a29bfe;
+  background: #EBAD2D;
 }
 ul li:nth-child(6n + 5) a:before {
-  background: #fd79a8;
+  background: #9E8A60;
 }
 ul li:nth-child(6n + 6) a:before {
   background: #ffeaa7;
