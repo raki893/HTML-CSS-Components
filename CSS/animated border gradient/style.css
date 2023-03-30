@@ -14,13 +14,7 @@ html {
   background-size: calc(100% - var(--border-size) * 2) calc(100% - var(--border-size) * 2), cover;
   background-position: center center;
   background-repeat: no-repeat;
-  -webkit-animation: bg-spin 3s linear infinite;
-          animation: bg-spin 3s linear infinite;
-}
-@-webkit-keyframes bg-spin {
-  to {
-    --border-angle: 1turn;
-  }
+  animation: bg-spin 3s linear infinite;
 }
 @keyframes bg-spin {
   to {
@@ -28,8 +22,7 @@ html {
   }
 }
 .box:hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 @property --border-angle {

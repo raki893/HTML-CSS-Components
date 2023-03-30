@@ -152,7 +152,7 @@ ul li:before {
   position: absolute;
   font-weight: 350;
   padding: 0 var(--s3);
-  color: hsla(0deg, 0%, 100%, 0.85);
+  color: hsla(0, 0%, 100%, 0.85);
   left: 9px;
 }
 @media (min-width: 40.625em) {
@@ -318,7 +318,7 @@ ul li:before {
 .c-services__item p {
   margin-top: var(--s-1);
   font-weight: 400;
-  color: hsl(250deg, 7%, 46%);
+  color: hsl(250, 7%, 46%);
 }
 .c-services__item:hover {
   background-color: var(--color-brand-accent);
@@ -337,7 +337,7 @@ ul li:before {
   color: #fff;
 }
 .c-services__item:hover p {
-  color: hsla(0deg, 0%, 100%, 0.8);
+  color: hsla(0, 0%, 100%, 0.8);
 }
 .c-services__item:hover:after {
   background-color: #fff;

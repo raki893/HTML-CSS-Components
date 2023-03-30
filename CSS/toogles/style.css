@@ -265,27 +265,10 @@ label.toggle-item:before {
 }
 
 #beer-pong:checked ~ .cup {
-  -webkit-animation: 0.2s linear cup 1s forwards;
-          animation: 0.2s linear cup 1s forwards;
+  animation: 0.2s linear cup 1s forwards;
 }
 #beer-pong:checked + label:before {
-  -webkit-animation: 2s linear bounce-off forwards;
-          animation: 2s linear bounce-off forwards;
-}
-
-@-webkit-keyframes cup {
-  0% {
-    transform: none;
-  }
-  50% {
-    transform: rotate(75deg) translate(10px, 15px);
-  }
-  90% {
-    transform: rotate(70deg) translate(10px, 15px);
-  }
-  100% {
-    transform: rotate(75deg) translate(10px, 15px);
-  }
+  animation: 2s linear bounce-off forwards;
 }
 
 @keyframes cup {
@@ -300,43 +283,6 @@ label.toggle-item:before {
   }
   100% {
     transform: rotate(75deg) translate(10px, 15px);
-  }
-}
-@-webkit-keyframes bounce-off {
-  0% {
-    transform: translateY(0);
-  }
-  10%, 25% {
-    transform: translate(-20px, -80px);
-  }
-  50% {
-    transform: rotate(163deg);
-    transform-origin: 100px -12px;
-  }
-  70% {
-    transform: rotate(0) translate(-3px, -8px);
-    transform-origin: 100px -12px;
-  }
-  75% {
-    transform: translate(20px, -8px);
-  }
-  80% {
-    transform: translate(30px, 0px);
-  }
-  85% {
-    transform: translate(40px, -3px);
-  }
-  87% {
-    transform: translate(46px, 0px);
-  }
-  90% {
-    transform: translate(52px, -1px);
-  }
-  95% {
-    transform: translate(60px, 0px);
-  }
-  100% {
-    transform: translate(64px, 0px);
   }
 }
 @keyframes bounce-off {
@@ -451,8 +397,7 @@ label.toggle-item:before {
 }
 
 #doggo:checked ~ .cup {
-  -webkit-animation: 0.2s linear cup 1s forwards;
-          animation: 0.2s linear cup 1s forwards;
+  animation: 0.2s linear cup 1s forwards;
 }
 #doggo:checked + label .dog {
   left: 68px;
@@ -524,57 +469,10 @@ label.toggle-item:before {
   transition-delay: 1.35s;
 }
 #hoop:checked + label .ball__wrapper {
-  -webkit-animation: 1.5s linear ball-wrapper forwards;
-          animation: 1.5s linear ball-wrapper forwards;
+  animation: 1.5s linear ball-wrapper forwards;
 }
 #hoop:checked + label .ball {
-  -webkit-animation: 1.5s linear ball forwards;
-          animation: 1.5s linear ball forwards;
-}
-
-@-webkit-keyframes ball {
-  0% {
-    transform: none;
-  }
-  40% {
-    transform: rotate(-150deg);
-  }
-  48% {
-    transform: rotate(-150deg) translateY(92px);
-  }
-  52% {
-    transform: rotate(-150deg) translate(-10px, 80px);
-  }
-  56% {
-    transform: rotate(-150deg) translate(-25px, 91px);
-  }
-  60% {
-    transform: rotate(-150deg) translate(-35px, 86px);
-  }
-  65% {
-    transform: rotate(-150deg) translate(-45px, 91px);
-  }
-  70% {
-    transform: rotate(-150deg) translate(-50px, 87px);
-  }
-  75% {
-    transform: rotate(-150deg) translate(-60px, 91px);
-  }
-  80% {
-    transform: rotate(-150deg) translate(-65px, 88px);
-  }
-  85% {
-    transform: rotate(-150deg) translate(-70px, 91px);
-  }
-  90% {
-    transform: rotate(-150deg) translate(-75px, 90px);
-  }
-  95% {
-    transform: rotate(-150deg) translate(-80px, 90px);
-  }
-  100% {
-    transform: rotate(-150deg) translate(-82px, 91px);
-  }
+  animation: 1.5s linear ball forwards;
 }
 
 @keyframes ball {
@@ -619,14 +517,6 @@ label.toggle-item:before {
   }
   100% {
     transform: rotate(-150deg) translate(-82px, 91px);
-  }
-}
-@-webkit-keyframes ball-wrapper {
-  0% {
-    transform: none;
-  }
-  40%, 100% {
-    transform: rotate(150deg);
   }
 }
 @keyframes ball-wrapper {
